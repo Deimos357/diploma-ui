@@ -13,15 +13,18 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   wrongCreds = false;
+  from : string;
 
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     localStorage.removeItem('token');
+    this.route.queryParams.subscribe(params => {this.from = params.from});
 
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],

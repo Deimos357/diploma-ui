@@ -18,6 +18,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { TokenInterceptorService } from './_service/token-interceptor.service';
 import { UserService } from './_service/user.service';
 import { AuthGuard } from './_service/auth-guard.service';
+import { RouteComponent } from './route/route.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RouteListComponent } from './route-list/route-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { AuthGuard } from './_service/auth-guard.service';
     MainPageComponent,
     HistoryComponent,
     NewRouteComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    RouteComponent,
+    FavoritesComponent,
+    ProfileComponent,
+    RouteListComponent
   ],
   imports: [
     BrowserModule,

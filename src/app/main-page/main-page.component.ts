@@ -10,7 +10,9 @@ import { UserService } from '../_service/user.service';
 export class MainPageComponent implements OnInit {
   user: User;
   constructor(
-      private userService: UserService) {
+    private userService: UserService
+  ) {
+
   }
 
   ngOnInit(): void {

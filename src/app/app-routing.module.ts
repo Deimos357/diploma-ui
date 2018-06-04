@@ -8,6 +8,9 @@ import { HistoryComponent } from './history/history.component';
 import { NewRouteComponent } from './new-route/new-route.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthGuard } from './_service/auth-guard.service';
+import { RouteComponent } from './route/route.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
@@ -15,8 +18,11 @@ const routes: Routes = [
     { path: 'registartion', component: RegistrationComponent },
     { path: '', component: MainPageComponent, canActivate: [AuthGuard], children: [
         {path: 'welcome', component: WelcomeComponent},
+        {path: 'profile', component: ProfileComponent},
         {path: 'history', component: HistoryComponent},
-        {path: 'new-route', component: NewRouteComponent}
+        {path: 'favorites', component: FavoritesComponent},
+        {path: 'new-route', component: NewRouteComponent},
+        {path: 'route/:id', component: RouteComponent}
     ] }
 ];
 
