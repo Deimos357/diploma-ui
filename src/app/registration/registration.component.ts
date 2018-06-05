@@ -43,10 +43,10 @@ export class RegistrationComponent implements OnInit {
     this.userService.registartion(this.registerForm.value)
             .subscribe(
                 data => {
-                    this.router.navigate(['/login', { from: 'registration' }]);
+                  this.router.navigate(['/login'], { queryParams: { from: 'registration' }});
                 },
                 error => {
-                    this.loading = false;
+                  this.loading = false;
                 });
   }
 }

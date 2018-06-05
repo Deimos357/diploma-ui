@@ -1,8 +1,10 @@
-<div class="container" style="margin-top: 100px">
+<div style="height: 100%; width: 100%; background-image: url(http://daler.ru/pictures/1/2560x1600/Kafe-nad-morem-12103.jpg); position: fixed;">
+<div class="container" style="margin-top: 100px;">
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
-        <h2>Login</h2>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="border: 2px solid #ccc; border-radius: 4px; padding: 12px 20px;">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="border: 2px solid #ccc; border-radius: 4px; padding: 12px 20px; background-color: white">
+                <h2>Login</h2>
+                <hr>
             <div class="form-group">
                 <div *ngIf="from == 'registration'" class="alert alert-success">
                     You have successfully registered
@@ -37,4 +39,5 @@
         </form>
     </div>
     </div>
+</div>
 </div>
