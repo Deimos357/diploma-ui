@@ -1,3 +1,3 @@
 export class AppSettings {
-    public static host = 'http://localhost:8080';
+    public static host = 'https://0d172cc0.ngrok.io';
 }

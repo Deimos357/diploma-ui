@@ -22,6 +22,7 @@ import { RouteComponent } from './route/route.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouteListComponent } from './route-list/route-list.component';
+import { RouteService } from './_service/route.service';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { RouteListComponent } from './route-list/route-list.component';
   providers: [
     AuthenticationService,
     UserService,
+    RouteService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true
