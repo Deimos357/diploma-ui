@@ -1,13 +1,19 @@
 <div class="container" style="margin-top: 10px;">
   <div class="row">
-    <div class="col-sm-8 offset-sm-2">
+    <div class="col">
       <form [formGroup]="routeForm" (ngSubmit)="onSubmit()" style="border: 2px solid #ccc; border-radius: 4px; padding: 12px 20px; background-color: white">
+          <div class="form-group form-inline justify-content-between">
         <h2>New route</h2>
+          <button  type="submit" [disabled]="loading" class="btn btn-primary float-right" >Compute</button>
+        </div>
         <hr>
 
         <datalist id="st">
           <option *ngFor="let station of stations" data-station="station">{{station.name}}</option>
         </datalist>
+
+        <div class="row">
+        <div class="col-sm-4">
 
         <div class="form-group">
           <label for="start">Start station</label>
@@ -31,7 +37,7 @@
         </div>
 
         <div class="form-group">
-          <span>Auto</span>
+          <span>Bus</span>
           <input style="margin-left: 5px" type="checkbox" [checked]="auto" (change)="auto = !auto" /> 
           <span style="margin-left: 10px">Fly</span>
           <input style="margin-left: 5px" type="checkbox" [checked]="fly" (change)="fly = !fly" /> 
@@ -43,16 +49,17 @@
           <label>Start date</label>
           <input type="date" formControlName="date" max="3000-12-31" min="1000-01-01" class="form-control" style="width: 180px">
         </div>
-
-        <h5>Station list</h5>
-        <div class="form-group form-inline">
+      </div>
+      <div class="col">
+          <h5>Station list</h5>
+        <div class="form-group form-inline justify-content-between">
           <label>Station</label>
           <input list="st" autocomplete="off" class="form-control mar" formControlName="addStName" [ngClass]="{ 'is-invalid': wrongNewStation }">
           <label class="mar">Days</label>
           <input autocomplete="off" class="form-control nums mar" formControlName="addStDays" type="number" min="0" max="20">
           <label class="mar">Hours</label>
           <input autocomplete="off" class="form-control nums mar" formControlName="addStHours" type="number" min="0" max="23" value="0">
-          <button type="button" class="btn btn-primary mar" (click)="addStation()" style="width: 80px;">Add</button>
+          <button type="button" class="btn btn-primary mar float-right" (click)="addStation()" style="width: 90px;">Add</button>
           <div *ngIf="wrongNewStation" class="invalid-feedback">
               Select station from list
           </div>
@@ -79,9 +86,9 @@
             </tr>
           </tbody>
         </table>
-        <div class="form-group">
-          <button  type="submit" [disabled]="loading" class="btn btn-primary">Compute</button>
-        </div>
+      </div>
+      </div>
+
       </form>
     </div>
   </div>
