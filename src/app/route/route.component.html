@@ -1,3 +1,89 @@
-<p>
-  route works!
-</p>
+<div class="container" style="margin-top: 10px; border: 2px solid #ccc; border-radius: 4px; padding: 12px 20px;">
+  <div class="row">
+    <div class="col-3">
+      <h2>{{route?.name}}</h2>
+    </div>
+    <div class="col-4">
+      <h5 *ngIf="route" style="margin-top: 10px">{{'Creation date: ' + (route?.creationDate | date : "dd.MM.y HH:mm")}}</h5>
+    </div>
+    <div class="col">
+      <button *ngIf="route?.favorite == false" type="button" class="btn btn-primary float-right" (click)="switchFav()">Make favorite</button>
+      <button *ngIf="route?.favorite" type="button" class="btn btn-primary float-right" (click)="switchFav()">Remove from favorite</button>
+      <button *ngIf="route" type="button" class="btn btn-primary float-right" style="width: 100px; margin-right: 10px" (click)="edit()">Edit</button>
+    </div>
+  </div>
+  <hr>
+  <ul class="mylist">
+    <li *ngFor="let item of drawItems" [ngClass]="item.company ? 'ticketsli' : 'stationn'">
+      <div class="row" *ngIf="item.company">
+        <div class="col-4">
+          <p>{{item.name}}</p>
+          <p>{{item.company.name}}</p>
+        </div>
+        <div class="col-4">
+          <p>{{item.departureTime | date : "dd.MM.y HH:mm"}}</p>
+          <p>{{(item.departureTime + item.duration) | date : "dd.MM.y HH:mm"}}</p>
+        </div>
+        <div class="col-2">
+          <p style="margin-top: 20px; text-align: center">{{ item.cost | currency : "EUR" }}</p>
+        </div>
+        <div class="col-2">
+          <button style="margin-top: 15px; width: 100px;" type="button" class="btn btn-primary" (click)="showAlts(item)">Change</button>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="item.dateDep || item.dateAr">
+        <div class="col-4">
+          <p>{{item.name}}</p>
+        </div>
+        <div class="col">
+          <p *ngIf="!item.dateAr">{{ 'Start: ' + (item.dateDep | date : "dd.MM.y HH:mm") }}</p>
+          <p *ngIf="!item.dateDep">{{ 'Finish: ' + (item.dateAr | date : "dd.MM.y HH:mm")}}</p>
+          <p *ngIf="item.dateDep && item.dateAr">{{ (item.dateAr | date : "dd.MM.y HH:mm") + ' - ' + (item.dateDep | date : "dd.MM.y HH:mm") }}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="modal fade" bsModal #modal="bs-modal" (onHide)="hideAlts($event)">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="row" style="width: 100%">
+          <div class="col">
+            <h3>{{replacingTicket?.from.name}} - {{replacingTicket?.to.name}}</h3>
+          </div>
+          <div class="col">
+            <div class="form-group form-inline justify-content-between float-right" style="margin-top: 8px;">
+              <label style="font-size: 14pt">Recalculate the remaining path</label>
+              <input style="margin-left: 10px;" type="checkbox" [checked]="rebuild" (change)="rebuild = !rebuild" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <ul class="mylist">
+          <li *ngFor="let ticket of altTickets" class="ticketsli">
+            <div class="row">
+              <div class="col-4">
+                <p>{{ticket.name}}</p>
+                <p>{{ticket.company.name}}</p>
+              </div>
+              <div class="col-4">
+                <p>{{ticket.departureTime | date : "dd.MM.y hh:mm"}}</p>
+                <p>{{(ticket.departureTime + ticket.duration) | date : "dd.MM.y HH:mm"}}</p>
+              </div>
+              <div class="col-2">
+                <p style="margin-top: 20px; text-align: center">{{ ticket.cost | currency : "EUR" }}</p>
+              </div>
+              <div class="col-2">
+                <button style="margin-top: 15px" type="button" class="btn btn-primary" (click)="choiceAlt(ticket)">Choose</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

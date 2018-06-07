@@ -11,6 +11,7 @@ import { AuthGuard } from './_service/auth-guard.service';
 import { RouteComponent } from './route/route.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditRouteComponent } from './edit-route/edit-route.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
         {path: 'history', component: HistoryComponent},
         {path: 'favorites', component: FavoritesComponent},
         {path: 'new-route', component: NewRouteComponent},
-        {path: 'route/:id', component: RouteComponent}
+        {path: 'route/:id', component: RouteComponent},
+        {path: 'route/:id/edit', component: EditRouteComponent}
     ] }
 ];
 

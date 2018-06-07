@@ -82,10 +82,10 @@ export class NewRouteComponent implements OnInit {
     this.routeService.createRoute(this.f.factor.value, new Date(this.f.date.value).getTime(), list[0].id, cloned, transport, this.f.name.value)
       .subscribe(
         data => {
-          this.router.navigate(['/route/' + data.id]);
+          this.router.navigate(['/route', data.id]);
         }, error => {
           this.loading = false;
-          // TODO
+          alert('ffff');
         });
   }
 

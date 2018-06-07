@@ -23,6 +23,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouteListComponent } from './route-list/route-list.component';
 import { RouteService } from './_service/route.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { EditRouteComponent } from './edit-route/edit-route.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { RouteService } from './_service/route.service';
     RouteComponent,
     FavoritesComponent,
     ProfileComponent,
-    RouteListComponent
+    RouteListComponent,
+    EditRouteComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { RouteService } from './_service/route.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [
     AuthenticationService,

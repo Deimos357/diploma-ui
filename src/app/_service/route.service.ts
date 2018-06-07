@@ -73,7 +73,7 @@ export class RouteService {
     }));
   }
 
-  switchFavorite(id) {
+  switchFavorite(id : number) {
     return this.http.put<any>(AppSettings.host + '/core/v1/routes/' + id + '/favorite', {})
     .pipe(map(response => {
       return response.data

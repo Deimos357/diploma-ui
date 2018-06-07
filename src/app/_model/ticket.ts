@@ -11,5 +11,5 @@ export class Ticket {
     from : Station;
     to : Station;
     company : Company;
-    isAvailable : boolean;
+    available : boolean;
 }
