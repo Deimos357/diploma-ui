@@ -20,32 +20,6 @@ export class RouteComponent implements OnInit {
   altTickets : Ticket[];
   drawItems: any[];
 
-  testTicket : Ticket = {
-    "id": 23,
-    "name": "lil_new_time",
-    "cost": 100,
-    "duration": 18000000,
-    "departureTime": 1528156800000,
-    "transport": 1,
-    "from": {
-      "id": 2,
-      "name": "Харьков",
-      "latitude": 50,
-      "longitude": 36
-    },
-    "to": {
-      "id": 1,
-      "name": "Берлин",
-      "latitude": 52,
-      "longitude": 13
-    },
-    "company": {
-      "id": 1,
-      "name": "mymymy"
-    },
-    "available": false
-  };  
-
   @ViewChild(ModalDirective) modal: ModalDirective;
 
   constructor(
@@ -155,5 +129,9 @@ export class RouteComponent implements OnInit {
   hideAlts($event: ModalDirective) { 
     this.altTickets = [];
     this.replacingTicket = null;
+  }
+
+  routeMap() {
+    this.router.navigate(['route', this.route.id, 'map']);
   }
 }

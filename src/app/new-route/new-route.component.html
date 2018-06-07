@@ -37,17 +37,17 @@
             </div>
 
             <div class="form-group">
-              <span>Bus</span>
-              <input style="margin-left: 5px" type="checkbox" [checked]="auto" (change)="auto = !auto" />
-              <span style="margin-left: 10px">Fly</span>
-              <input style="margin-left: 5px" type="checkbox" [checked]="fly" (change)="fly = !fly" />
-              <span style="margin-left: 10px">Train</span>
-              <input style="margin-left: 5px" type="checkbox" [checked]="train" (change)="train = !train" />
+              <input type="checkbox" [checked]="auto" (change)="auto = !auto" />
+              <span style="margin-left: 5px">Bus</span>
+              <input style="margin-left: 10px" type="checkbox" [checked]="fly" (change)="fly = !fly" />
+              <span style="margin-left: 5px">Plane</span>
+              <input style="margin-left: 10px" type="checkbox" [checked]="train" (change)="train = !train" />
+              <span style="margin-left: 5px">Train</span>
             </div>
 
             <div class="form-group">
               <label>Start date</label>
-              <input type="date" formControlName="date" max="3000-12-31" min="1000-01-01" class="form-control" style="width: 180px">
+              <input type="date" formControlName="date" max="3000-12-31" min="2018-06-06" class="form-control" style="width: 180px">
             </div>
           </div>
           <div class="col">

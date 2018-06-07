@@ -7,6 +7,7 @@
       <h5 *ngIf="route" style="margin-top: 10px">{{'Creation date: ' + (route?.creationDate | date : "dd.MM.y HH:mm")}}</h5>
     </div>
     <div class="col">
+      <button *ngIf="route" type="button" class="btn btn-primary float-right" (click)="routeMap()"  style="margin-left: 10px">Show map</button>
       <button *ngIf="route?.favorite == false" type="button" class="btn btn-primary float-right" (click)="switchFav()">Make favorite</button>
       <button *ngIf="route?.favorite" type="button" class="btn btn-primary float-right" (click)="switchFav()">Remove from favorite</button>
       <button *ngIf="route" type="button" class="btn btn-primary float-right" style="width: 100px; margin-right: 10px" (click)="edit()">Edit</button>

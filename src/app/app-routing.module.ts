@@ -12,6 +12,7 @@ import { RouteComponent } from './route/route.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditRouteComponent } from './edit-route/edit-route.component';
+import { GmapComponent } from './gmap/gmap.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
         {path: 'favorites', component: FavoritesComponent},
         {path: 'new-route', component: NewRouteComponent},
         {path: 'route/:id', component: RouteComponent},
-        {path: 'route/:id/edit', component: EditRouteComponent}
+        {path: 'route/:id/edit', component: EditRouteComponent},
+        {path: 'route/:id/map', component: GmapComponent}
     ] }
 ];
 

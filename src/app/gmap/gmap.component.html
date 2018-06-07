@@ -1,0 +1,19 @@
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <agm-marker 
+    *ngFor="let t of route?.tickets; let i = index"
+    [latitude]="t.from.latitude"
+    [longitude]="t.from.longitude"
+    [label]="(i+1) + ''">
+  </agm-marker>
+  <agm-polyline>
+    <agm-polyline-point 
+      *ngFor="let t of route?.tickets; let i = index"
+      [latitude]="t.from.latitude"
+      [longitude]="t.from.longitude">
+    </agm-polyline-point>
+    <agm-polyline-point
+      [latitude]="route?.tickets[route?.tickets.length - 1].to.latitude"
+      [longitude]="route?.tickets[route?.tickets.length - 1].to.longitude">
+    </agm-polyline-point>
+  </agm-polyline>
+</agm-map>

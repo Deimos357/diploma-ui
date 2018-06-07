@@ -30,4 +30,5 @@
 }
 .myli:hover {
     background-color: #F0E68C;
+    cursor: pointer;
 }

@@ -25,6 +25,8 @@ import { RouteListComponent } from './route-list/route-list.component';
 import { RouteService } from './_service/route.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { EditRouteComponent } from './edit-route/edit-route.component';
+import { GmapComponent } from './gmap/gmap.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { EditRouteComponent } from './edit-route/edit-route.component';
     FavoritesComponent,
     ProfileComponent,
     RouteListComponent,
-    EditRouteComponent
+    EditRouteComponent,
+    GmapComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,10 @@ import { EditRouteComponent } from './edit-route/edit-route.component';
     BrowserAnimationsModule,
     LayoutModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBIKEpoDruUY74d1K5aMWG_JzitAVzo1bw'
+    })
   ],
   providers: [
     AuthenticationService,
