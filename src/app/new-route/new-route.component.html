@@ -47,7 +47,7 @@
 
             <div class="form-group">
               <label>Start date</label>
-              <input type="date" formControlName="date" max="3000-12-31" min="2018-06-06" class="form-control" style="width: 180px">
+              <input type="date" formControlName="date" max="3000-12-31" min="{{now | date:'yyyy-MM-dd'}}" class="form-control" style="width: 180px">
             </div>
           </div>
           <div class="col">

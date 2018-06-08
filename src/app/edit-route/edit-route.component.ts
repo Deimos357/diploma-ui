@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./edit-route.component.css']
 })
 export class EditRouteComponent implements OnInit {
+  now: Date;
   route: Route;
 
   auto: boolean;
@@ -34,6 +35,8 @@ export class EditRouteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.now = new Date();
+    
     this.wrongNewStation = false;
 
     this.routeService.getStations().subscribe(st => {

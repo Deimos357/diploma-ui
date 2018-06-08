@@ -11,6 +11,7 @@ import { StationInRoute } from '../_model/station-in-route';
   styleUrls: ['./new-route.component.css']
 })
 export class NewRouteComponent implements OnInit {
+  now: Date;
   auto: boolean;
   fly: boolean;
   train: boolean;
@@ -30,6 +31,8 @@ export class NewRouteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.now = new Date();
+    
     this.wrongNewStation = false;
 
     this.auto = true;

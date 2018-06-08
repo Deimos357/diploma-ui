@@ -14,6 +14,7 @@ export class RouteListComponent implements OnInit {
   hasNext: boolean;
   hasPrev: boolean;
   offset: number;
+  loading: boolean;
 
   limit: number = 10;
   
@@ -23,6 +24,7 @@ export class RouteListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loading = false;
   }
 
   @Input()
@@ -33,6 +35,7 @@ export class RouteListComponent implements OnInit {
   }
 
   loadpage(offset) {
+    this.loading = true;
     this.offset = offset;
 
     this.hasPrev = offset != 0;
@@ -40,11 +43,16 @@ export class RouteListComponent implements OnInit {
     if (this.type == 'f') {
       this.routeService.getFavorites(offset).subscribe(r => {
         this.setRL(r);
+      }, er => {
+        this.loading = false;
       })
     } else {
       this.routeService.getHistory(offset).subscribe(r => {
         this.setRL(r);        
-      })
+      },
+    er => {
+      this.loading = false;
+    })
     }
   }
 
@@ -70,7 +78,7 @@ export class RouteListComponent implements OnInit {
     })
 
     this.hasNext = this.routes.length == this.limit;
-    console.log(this.routes);
+    this.loading = false;
   }
 
   click(r: Route) {
