@@ -1,18 +1,45 @@
 <div class="container">
   <div class="row">
       <div class="col-12 news">
-        some global shit
+        <div class="row">
+          <div class="col-8">
+            <br>
+            <p style="font-size: 40pt; font-weight: 500">Tripify</p>
+            <h5>Tripify is a web service which helps with the planning 
+              and optimization of travel and selects tickets for transportation 
+              by the given parameters.</h5>
+              <br>
+            <button type="button" class="btn btn-primary" [routerLink]="['/new-route']">TRY NOW ⟶</button>
+          </div>
+          <div class="col-4">
+            <img src="/assets/images/35-513.png" style="width:320px;height:320px;">
+          </div>
+        </div>
       </div>
   </div>
   <div class="row">
-      <div class="col news">
-        news 1
+      <div class="col news2">
+          <p style="font-size: 30pt; font-weight: 500">Select options</p>
+          <hr>
+          <h5>Select parameters of your travel like your priorities, start date, city list and so on.</h5>
+          <br>
+          <br>
+          <img src="/assets/images/bus2.jpg" style="width:100%">
       </div>
-      <div class="col news">
-        news 2
+      <div class="col news2">
+          <p style="font-size: 30pt; font-weight: 500">Generate route</p>
+          <hr>
+          <h5>Service will compute your travel route following to your requirements best way it can.</h5>
+          <br>
+          <img src="/assets/images/plane.jpg" style="width:100%">
       </div>
-      <div class="col news">
-        news 3
+      <div class="col news2">
+          <p style="font-size: 30pt; font-weight: 500">Edit result</p>
+          <hr>
+          <h5>You can replace some tickets with proposed alternatives or change some paramaters to make your travel better.</h5>
+          <br>
+          <br>
+          <img src="/assets/images/train.jpg" style="width:100%">
       </div>
   </div>
 </div>

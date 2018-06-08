@@ -26,7 +26,8 @@ export class NewRouteComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private routeService: RouteService) { }
+    private routeService: RouteService
+  ) { }
 
   ngOnInit() {
     this.wrongNewStation = false;
@@ -121,6 +122,11 @@ export class NewRouteComponent implements OnInit {
     var index = this.selectedStations.indexOf(st);
     if (index > -1) {
       this.selectedStations.splice(index, 1);
+      
+      let s = new Station;
+      s.id = st.stationId;
+      s.name = st.name;
+      this.stations.push(s);
     }
   }
 }

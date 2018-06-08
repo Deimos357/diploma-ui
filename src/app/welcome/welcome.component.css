@@ -1,5 +1,12 @@
 .news {
     height: 350px;
-    border: 1px solid black;
     padding: 12px 20px;
+    background-color: rgba(172, 234, 255, 0.253);
+}
+.news2 {
+    height: 350px;
+    padding: 12px 20px;
+    background-color: rgba(254, 255, 172, 0.61);
+    margin-left: 10px;
+    margin-top: 10px;
 }
