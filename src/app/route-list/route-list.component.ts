@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Route } from '../_model/route';
+import { RouteService } from '../_service/route.service';
 import { Router } from '@angular/router';
+import { Route } from '../_model/route';
 
 @Component({
   selector: 'app-route-list',
@@ -8,19 +9,56 @@ import { Router } from '@angular/router';
   styleUrls: ['./route-list.component.css']
 })
 export class RouteListComponent implements OnInit {
-  @Input('routes') _routes: Route[];
+  @Input('typ') type: string;
+  routes: Route[];
+  hasNext: boolean;
+  hasPrev: boolean;
+  offset: number;
+
+  limit: number = 10;
   
   constructor(
-    private router: Router
+    private router: Router,
+    private routeService: RouteService
   ) { }
 
   ngOnInit() {
   }
 
   @Input()
-  set routes(routes: Route[]) {
-    this._routes = routes;
-    this._routes.forEach(r => {
+  set typ(typ: string) {
+    this.type = typ;
+
+    this.loadpage(0);
+  }
+
+  loadpage(offset) {
+    this.offset = offset;
+
+    this.hasPrev = offset != 0;
+
+    if (this.type == 'f') {
+      this.routeService.getFavorites(offset).subscribe(r => {
+        this.setRL(r);
+      })
+    } else {
+      this.routeService.getHistory(offset).subscribe(r => {
+        this.setRL(r);        
+      })
+    }
+  }
+
+  setRL(newRL: Route[]) {
+    if (newRL.length == 0) {
+      this.hasNext = false;
+      this.offset = this.offset - 1;
+      this.hasPrev = this.offset != 0;
+      return;
+    }
+
+    this.routes = newRL;
+
+    this.routes.forEach(r => {
       let s = '';
   
       for (var i = 0; i < 3 && i < r.tickets.length; i++) {
@@ -30,10 +68,9 @@ export class RouteListComponent implements OnInit {
 
       r.stations = s;
     })
-  }
 
-  get routes(): Route[] {
-    return this._routes;
+    this.hasNext = this.routes.length == this.limit;
+    console.log(this.routes);
   }
 
   click(r: Route) {

@@ -22,15 +22,15 @@ export class RouteService {
     }));
   }
 
-  getFavorites() {
-    return this.http.get<any>(AppSettings.host + '/core/v1/routes/favorites')
+  getFavorites(offset) {
+    return this.http.get<any>(AppSettings.host + '/core/v1/routes/favorites?offset=' + offset)
     .pipe(map(response => {
       return response.data
     }));
   }
 
-  getHistory() {
-    return this.http.get<any>(AppSettings.host + '/core/v1/routes/history')
+  getHistory(offset) {
+    return this.http.get<any>(AppSettings.host + '/core/v1/routes/history?offset=' + offset)
     .pipe(map(response => {
       return response.data
     }));

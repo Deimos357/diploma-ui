@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RouteService } from '../_service/route.service';
-import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-history',
@@ -8,13 +6,10 @@ import { Route } from '@angular/router';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
-  routes: Route[];
 
   constructor(
-    private routeService: RouteService
   ) { }
 
   ngOnInit() {
-    this.routeService.getHistory().subscribe(r => this.routes = r);
   }
 }

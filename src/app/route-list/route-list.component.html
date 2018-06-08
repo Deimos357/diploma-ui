@@ -1,3 +1,7 @@
+<div class="form-group form-inline justify-content-between" *ngIf="hasPrev || hasNext">
+    <button [ngStyle]="{'visibility': hasPrev ? 'visible' : 'hidden'}" type="button" class="btn btn-primary float-left" (click)="loadpage(offset - 1)">Previous page</button>
+    <button [ngStyle]="{'visibility': hasNext ? 'visible' : 'hidden'}" type="button" class="btn btn-primary float-right" (click)="loadpage(offset + 1)">Next page</button>
+</div>
 <ul class="mylist">
     <li class="headerr">
         <div class="row">
