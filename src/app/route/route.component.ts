@@ -19,6 +19,7 @@ export class RouteComponent implements OnInit {
   replacingTicket : Ticket;
   altTickets : Ticket[];
   drawItems: any[];
+  total: number;
 
   @ViewChild(ModalDirective) modal: ModalDirective;
 
@@ -48,6 +49,8 @@ export class RouteComponent implements OnInit {
     s.id = this.route.tickets[0].from.id;
     this.drawItems.push(s);
 
+    this.total = 0;
+
     this.route.tickets.forEach(ticket => {
       this.drawItems.push(ticket);
 
@@ -58,6 +61,8 @@ export class RouteComponent implements OnInit {
       s.id = ticket.to.id;
       s.dateAr = ticket.departureTime + ticket.duration;
       this.drawItems.push(s);
+
+      this.total += ticket.cost;
     });
   }
 

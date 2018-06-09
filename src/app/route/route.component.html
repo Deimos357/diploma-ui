@@ -45,6 +45,10 @@
       </div>
     </li>
   </ul>
+  <hr>
+  <div class="d-flex">
+    <h3 *ngIf="route" class="ml-auto" style="font-weight: 500">Total: {{ total | currency : "EUR" }}</h3>
+  </div>
 </div>
 
 <div class="modal fade" bsModal #modal="bs-modal" (onHide)="hideAlts($event)">
