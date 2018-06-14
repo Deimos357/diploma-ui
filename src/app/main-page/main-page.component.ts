@@ -20,6 +20,9 @@ export class MainPageComponent implements OnInit {
   }
 
   getCurrentUser(): void {
-       this.userService.getCurrentUser().subscribe(user => this.user = user);
+       this.userService.getCurrentUser().subscribe(user => {
+         this.user = user;
+         this.userService.update(user);
+      });
   }
 }

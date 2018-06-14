@@ -7,9 +7,11 @@ import { User } from '../_model/user';
 
 @Injectable()
 export class UserService {
+  user: User;
+
   constructor(private http: HttpClient) { }
 
-  registartion(user : User) {
+  registartion(user: User) {
     return this.http.post(AppSettings.host + '/core/v1/registration/email', user);
   }
 
@@ -18,5 +20,24 @@ export class UserService {
       .pipe(map(response => {
         return response.data
       }));
+  }
+
+  update(user: User) {
+    this.user = user;
+  }
+
+  edit(user: User) {
+    return this.http.put(AppSettings.host + '/core/v1/users/me', user);
+  }
+
+  changePassword(oldPas: string, newPas: string) {
+    return this.http.post(AppSettings.host + '/core/v1/users/change-password', {
+      'oldPassword': oldPas,
+      'newPassword': newPas
+    });
+  }
+
+  delete() {
+    return this.http.delete(AppSettings.host + '/core/v1/users/me');
   }
 }
